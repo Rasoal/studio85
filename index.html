@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio 85 — Criação de Sites Profissionais em RJ</title>
+  <meta name="description" content="Sites rápidos, responsivos e com SEO local. Solicite seu orçamento com a Studio 85.">
+  <link rel="canonical" href="https://www.studio85.com.br/">
+  <meta name="theme-color" content="#a7009d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Studio 85 — Criação de Sites Profissionais em RJ">
+  <meta property="og:description" content="Sites rápidos, responsivos e com SEO local. Solicite seu orçamento com a Studio 85.">
+  <meta property="og:url" content="https://www.studio85.com.br/">
+  <meta property="og:image" content="imagens/logo1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Studio 85 — Criação de Sites Profissionais em RJ">
+  <meta name="twitter:description" content="Sites rápidos, responsivos e com SEO local. Solicite seu orçamento com a Studio 85.">
+  <meta name="twitter:image" content="imagens/logo1.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff; --text:#111827; --muted:#6B7280; --line:#E5E7EB;
+      --brand:#a7009d; --brand-700:#85007d; --brand-50:#fde6fa; --accent:#ff00e6;
+      --ok:#16A34A; --warn:#EA580C; --error:#DC2626;
+      --radius:16px; --shadow:0 10px 25px rgba(0,0,0,.08);
+      --shadow-lg: 0 14px 40px rgba(17,24,39,.10), 0 6px 16px rgba(167,0,157,.06);
+      --band-1:#f7f8fb; --band-2:#f1f4f8;
+      --maxw:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--text); background:var(--bg); line-height:1.6}
+    img{max-width:100%;height:auto;display:block}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:var(--maxw);margin-inline:auto;padding-left:24px;padding-right:24px}
+    @media (max-width: 860px){.container{padding-left:24px;padding-right:24px}}
+    @supports(padding:max(0px)){
+      .container{padding-left:max(24px, env(safe-area-inset-left));padding-right:max(24px, env(safe-area-inset-right))}
+    }
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:16px;top:16px;width:auto;height:auto;background:#fff;border:2px solid var(--brand);padding:8px 12px;border-radius:8px;z-index:1000}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(10px); border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .brand-logo-img{width:140px;height:auto;display:block}
+    .brand-name{font-size:1.05rem}
+    .menu{display:flex;gap:20px;align-items:center}
+    .menu a{color:var(--text);font-weight:500}
+    .menu a:hover{color:var(--brand)}
+    .nav-cta{display:flex;gap:10px;align-items:center}
+
+    .hamb{display:none;background:none;border:none;padding:8px;border-radius:10px}
+    .hamb:focus{outline:2px solid var(--brand)}
+    .hamb svg{width:24px;height:24px}
+
+    /* 🔧 Correção: por padrão o drawer fica escondido (evita menu duplicado em desktop) */
+    .nav-drawer{display:none}
+
+    @media (max-width: 860px){
+      .menu{display:none}
+      .hamb{display:inline-flex}
+      .nav-drawer{position:fixed;inset:64px 0 auto 0;background:#fff;border-top:1px solid var(--line);padding:16px 20px}
+      .nav-drawer.open{display:block}
+      .nav-drawer a{display:block;padding:12px 8px;color:var(--text);border-radius:10px}
+      .nav-drawer a:focus,.nav-drawer a:hover{background:var(--brand-50);color:var(--brand)}
+      .nav-cta{margin-top:8px}
+    }
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid transparent;font-weight:600;cursor:pointer;transition:transform .05s ease, box-shadow .2s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--brand);color:#fff;box-shadow:0 8px 18px rgba(167,0,157,.25)}
+    .btn-primary:hover{background:var(--brand-700)}
+    /* 🔧 Ajuste: outline com cor e borda na mesma cor principal */
+    .btn-outline{background:#fff;border-color:var(--brand);color:var(--brand)}
+    .btn-outline:hover{background:var(--brand-50);box-shadow:0 8px 18px rgba(167,0,157,.12)}
+    /* 🔧 Novo tamanho menor para o CTA do header */
+    .btn-sm{padding:8px 12px;font-size:.95rem;border-radius:10px}
+
+    /* Ícone circular (WhatsApp) */
+    .btn-icon{width:46px;height:46px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:none;background:#25D366;color:#fff;cursor:pointer;box-shadow:0 10px 20px rgba(0,0,0,.18)}
+    .btn-icon:hover{filter:brightness(.95)}
+    .btn-icon svg{width:22px;height:22px}
+
+    /* Acessibilidade: texto apenas para leitores de tela */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Hero */
+    .hero{padding:64px 0 32px}
+    .hero-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+    .eyebrow{display:inline-block;padding:6px 10px;background:var(--brand-50);color:var(--brand);border-radius:999px;font-weight:700;font-size:.85rem}
+    h1{font-size:clamp(1.9rem,3.8vw,3rem);line-height:1.15;margin:16px 0 12px;color:var(--brand)}
+    .lead{font-size:1.1rem;color:var(--muted);max-width:60ch}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .hero-card{border:1px solid #eef2f7;border-radius:var(--radius);padding:20px;background:#fff;box-shadow:var(--shadow-lg)}
+    .hero-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    .hero-list li{display:flex;gap:10px;align-items:flex-start}
+    .check{color:var(--ok)}
+
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns:1fr}
+    }
+
+    /* Sections */
+    section{padding:72px 0; position:relative; z-index:0; scroll-margin-top:110px}
+    section::before{content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:100vw; height:100%; z-index:-1}
+    main>section + section{margin-top:24px}
+    main>section:nth-of-type(odd)::before{background:var(--band-1)}
+    main>section:nth-of-type(even)::before{background:var(--band-2)}
+    #home::before{background:transparent !important}
+    .section-title{font-size:1.7rem;margin:0 0 14px;color:var(--brand)}
+    .section-desc{color:var(--muted);margin:0 0 28px}
+
+    @media (max-width: 860px){
+      section{padding:56px 0; scroll-margin-top:90px}
+      main>section + section{margin-top:16px}
+    }
+
+    /* Benefits */
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .feature{border:1px solid #eef2f7;border-radius:14px;padding:16px;background:#fff;box-shadow:var(--shadow-lg)}
+    .feature h3{margin:10px 0 6px;font-size:1.05rem}
+    .icon{width:28px;height:28px}
+    @media (max-width: 980px){.grid-4{grid-template-columns:1fr 1fr}}
+    @media (max-width: 540px){.grid-4{grid-template-columns:1fr}}
+
+    /* Client logos */
+    .client-logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;align-items:center;justify-items:center}
+    .client-logos img{max-height:72px;width:auto;object-fit:contain}
+    @media (max-width: 980px){.client-logos img{max-height:64px}}
+    @media (max-width: 540px){.client-logos img{max-height:56px}}
+
+    /* Services */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{border:1px solid #eef2f7;border-radius:16px;padding:18px;background:#fff;box-shadow:var(--shadow-lg)}
+    .card h3{margin:8px 0}
+    .card p{color:var(--muted)}
+    @media (max-width: 980px){.grid-3{grid-template-columns:1fr 1fr}}
+    @media (max-width: 540px){.grid-3{grid-template-columns:1fr}}
+
+    /* Testimonials */
+    .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    blockquote{margin:0;padding:16px;border-left:4px solid var(--brand);background:#fff;border-radius:12px;border:1px solid #eef2f7;box-shadow:var(--shadow-lg)}
+    cite{display:block;margin-top:8px;font-style:normal;color:var(--muted)}
+    @media (max-width: 980px){.testi{grid-template-columns:1fr}}
+
+    /* FAQ */
+    details{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff}
+    details+details{margin-top:10px}
+    summary{font-weight:600;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+    form{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    label{font-weight:600}
+    input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit}
+    textarea{min-height:120px;resize:vertical}
+    .help{font-size:.9rem;color:var(--muted)}
+    .notice{margin-top:10px;font-size:.95rem}
+    .notice.ok{color:var(--ok)}
+    .notice.err{color:var(--error)}
+    @media (max-width: 980px){.contact{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+
+    /* Footer */
+    footer{border-top:none;padding:28px 0;background:#000;color:#fff}
+    .foot{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .foot small{color:#d1d5db}
+    .foot a{color:#fff}
+
+    /* 🔧 Botão flutuante do WhatsApp */
+    .whats-float{position:fixed;right:20px;top:76px;bottom:auto;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px rgba(0,0,0,.18);z-index:999}
+    .whats-float:hover{transform:translateY(-1px)}
+    .whats-float svg{width:28px;height:28px}
+    @media (max-width: 860px){ .whats-float{ top:auto; bottom:20px; right:16px } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Principal">
+      <a class="brand" href="#home" aria-label="Ir para início">
+        <img src="imagens/logo1.png" alt="Logo Studio 85" class="brand-logo-img" width="140" height="40">
+        <span class="brand-name" aria-hidden="true"></span>
+      </a>
+      <nav class="menu" aria-label="Links do site">
+        <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="nav-cta">
+        <!-- 🔧 Menor e com borda/texto na cor principal -->
+        <a class="btn btn-outline btn-sm" href="#contato" data-track="header-cta">Solicitar Orçamento</a>
+        <button class="hamb" aria-label="Abrir menu" aria-controls="drawer" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+    <div id="drawer" class="nav-drawer" aria-hidden="true">
+      <a href="#servicos">Serviços</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+      <div class="nav-cta">
+        <a class="btn btn-outline btn-sm" href="#contato" data-track="drawer-cta">Solicitar Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- HERO -->
+    <section id="home" class="hero container" aria-label="Introdução">
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow">Sites que convertem</span>
+          <h1>Seu site profissional, rápido e pronto para vender</h1>
+          <p class="lead">A Studio 85 cria sites <em>mobile‑first</em> com SEO local e integrações que geram clientes. Design que passa confiança, performance sólida e suporte próximo.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contato" data-track="hero-cta">Solicitar Orçamento</a>
+            <a class="btn btn-outline" href="https://wa.me/5521999999999?text=Ol%C3%A1%20Studio%2085!%20Quero%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" data-track="hero-whats">Falar no WhatsApp</a>
+          </div>
+          <ul class="hero-list" aria-label="Principais benefícios">
+            <li><span class="check" aria-hidden="true">✔</span> Design que passa confiança</li>
+            <li><span class="check" aria-hidden="true">✔</span> Performance e SEO local</li>
+            <li><span class="check" aria-hidden="true">✔</span> Integração com WhatsApp e Google</li>
+            <li><span class="check" aria-hidden="true">✔</span> Suporte e evolução contínua</li>
+          </ul>
+        </div>
+        <aside class="hero-card" aria-label="Resumo do projeto">
+          <h2 class="section-title" style="margin-top:0">O que você recebe</h2>
+          <ul>
+            <li>Site institucional <strong>mobile‑first</strong></li>
+            <li>Copy persuasiva + SEO on‑page</li>
+            <li>Formulário + WhatsApp integrados</li>
+            <li>Checklist de acessibilidade (WCAG)</li>
+          </ul>
+          <p class="help">Prazo ágil e acompanhamento pós‑publicação.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="container" aria-labelledby="beneficios">
+      <h2 id="beneficios" class="section-title">Por que a Studio 85?</h2>
+      <p class="section-desc">Tecnologia, design e conteúdo juntos para acelerar a sua presença digital.</p>
+      <div class="grid-4" role="list">
+        <article class="feature" role="listitem">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12l2-2 4 4 8-8 4 4-12 12L3 12z"/></svg>
+          <h3>Mobile‑first</h3>
+          <p>Experiência impecável no celular, onde está a maior parte do tráfego.</p>
+        </article>
+        <article class="feature" role="listitem">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2v20"/></svg>
+          <h3>SEO local</h3>
+          <p>Estrutura técnica e conteúdo pensados para você ser encontrado.</p>
+        </article>
+        <article class="feature" role="listitem">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+          <h3>Conversão</h3>
+          <p>CTAs claros, prova social e formulários acessíveis que geram contato.</p>
+        </article>
+        <article class="feature" role="listitem">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          <h3>Suporte próximo</h3>
+          <p>Manutenção e evolução para manter seu site sempre atual.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="servicos" class="container" aria-labelledby="servicos-title">
+      <h2 id="servicos-title" class="section-title">Serviços</h2>
+      <p class="section-desc">Escolha o pacote ideal e comece a captar clientes online.</p>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Site Institucional</h3>
+          <p>Estrutura completa, páginas essenciais e SEO on‑page. Pronto para publicar.</p>
+        </article>
+        <article class="card">
+          <h3>Landing Pages de Conversão</h3>
+          <p>Copy persuasiva, provas sociais e CTAs para campanhas e anúncios.</p>
+        </article>
+        <article class="card">
+          <h3>SEO Local</h3>
+          <p>Melhore seu posicionamento no Google e aumente o tráfego orgânico com estratégias de SEO eficazes.</p>
+        </article>
+        <article class="card">
+          <h3>Google Ads</h3>
+          <p>Campanhas otimizadas para atrair mais clientes por meio de anúncios estratégicos no Google.</p>
+        </article>
+        <article class="card">
+          <h3>Conteúdo & Blog</h3>
+          <p>Calendário editorial e artigos otimizados para ampliar alcance orgânico.</p>
+        </article>
+        <article class="card">
+          <h3>Soluções de Dados</h3>
+          <p>Organize, integre e analise seus dados com soluções que apoiam decisões inteligentes.</p>
+        </article>
+        <article class="card">
+          <h3>Desenvolvimento de Software</h3>
+          <p>Criação de sistemas personalizados para atender às necessidades específicas do seu negócio.</p>
+        </article>
+        <article class="card">
+          <h3>Inovação com IA</h3>
+          <p>Aplicações inteligentes com IA para automação, análise e ganho de produtividade.</p>
+        </article>
+        <article class="card">
+          <h3>Loja Virtual</h3>
+          <p>Lojas responsivas, integradas a meios de pagamento e otimizadas para conversão.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO / CLIENT LOGOS (placeholders) -->
+    <section id="portfolio" class="container" aria-labelledby="portfolio-title">
+      <h2 id="portfolio-title" class="section-title">Portfólio & Clientes</h2>
+      <p class="section-desc">Alguns dos negócios que já atendemos.</p>
+      <div class="client-logos" aria-label="Logos de clientes">
+        <img src="imagens/papoepizza.png" alt="Papo e Pizza">
+         <img src="imagens/gabiluz.png" alt="Gabi Luz">
+        <img src="imagens/sma.png" alt="SMA">
+        <img src="imagens/vitacorppus.png" alt="Vitacorppus">
+        <img src="imagens/raal.png" alt="RAAL">
+         <img src="imagens/mariana.png" alt="Papo e Pizza">
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="depoimentos" class="container" aria-labelledby="depoimentos-title">
+      <h2 id="depoimentos-title" class="section-title">O que dizem sobre nós</h2>
+      <div class="testi">
+        <blockquote>
+          “Em uma semana nosso site estava no ar e já recebemos contatos. Processo simples e eficiente!”
+          <cite>Mariana S. — Clínica Odontológica</cite>
+        </blockquote>
+        <blockquote>
+          “A Studio 85 entendeu nosso negócio e transformou em uma página que converte de verdade.”
+          <cite>Paulo R. — Assessoria Contábil</cite>
+        </blockquote>
+        <blockquote>
+          “Melhoramos rankeamento local e centralizamos o atendimento no WhatsApp. Recomendo.”
+          <cite>Gabriela L. — Estética & Bem‑Estar</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="container" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section-title">Perguntas Frequentes</h2>
+      <details>
+        <summary>Qual o prazo médio de entrega?</summary>
+        <p>Projetos iniciais costumam levar de 7 a 14 dias, dependendo do escopo e da disponibilidade de conteúdo.</p>
+      </details>
+      <details>
+        <summary>O que está incluso na criação do site?</summary>
+        <p>Estrutura de páginas principais, design responsivo, copy básica, SEO on‑page e integração com formulário/WhatsApp.</p>
+      </details>
+      <details>
+        <summary>Vocês oferecem suporte após a publicação?</summary>
+        <p>Sim. Oferecemos planos de manutenção com horas/mês para ajustes, melhorias e segurança.</p>
+      </details>
+      <details>
+        <summary>Como funciona o SEO local?</summary>
+        <p>Aplicamos boas práticas técnicas (metas, headings, schema) e orientamos conteúdo para buscas na sua região.</p>
+      </details>
+      <details>
+        <summary>Vocês cuidam de domínio e hospedagem?</summary>
+        <p>Podemos orientar ou gerenciar para você. Também suportamos publicação em GitHub Pages quando aplicável.</p>
+      </details>
+      <details>
+        <summary>Quais são as formas de pagamento?</summary>
+        <p>Transferência/PIX e cartão (via link de pagamento). Condições variam conforme o plano.</p>
+      </details>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contato" class="container" aria-labelledby="contato-title">
+      <h2 id="contato-title" class="section-title">Fale com a Studio 85</h2>
+      <p class="section-desc">Conte um pouco sobre o seu negócio e receba um orçamento personalizado.</p>
+      <div class="contact">
+        <form id="formContato" novalidate>
+          <div class="row">
+            <div>
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" required aria-required="true" placeholder="Seu nome completo">
+            </div>
+            <div>
+              <label for="email">E‑mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" required aria-required="true" placeholder="voce@exemplo.com">
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="telefone">Telefone/WhatsApp</label>
+              <input id="telefone" name="telefone" type="tel" inputmode="tel" placeholder="(21) 9 9999‑9999">
+            </div>
+            <div>
+              <label for="assunto">Assunto</label>
+              <input id="assunto" name="assunto" type="text" placeholder="Ex.: Criação de site institucional">
+            </div>
+          </div>
+          <div>
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" required aria-required="true" placeholder="Fale sobre seu negócio, objetivos e prazos."></textarea>
+          </div>
+          <div class="help">Ao enviar, concorda com nosso contato para continuidade do atendimento.</div>
+          <div class="cta-row">
+            <button class="btn btn-primary" type="submit" data-track="form-submit">Enviar mensagem</button>
+            <a class="btn-icon" href="https://wa.me/5521999999999?text=Ol%C3%A1%20Studio%2085!%20Tenho%20interesse%20em%20um%20site." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" data-track="contact-whats">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.62c-.27-.13-1.62-.8-1.87-.89-.25-.09-.43-.13-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.27-.13-1.15-.42-2.2-1.34-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.41.12-.54.12-.12.27-.32.4-.49.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.47l-.53-.01c-.18 0-.47.07-.72.34s-.94.92-.94 2.25  .96 2.61 1.1 2.79c.13.18 1.89 2.89 4.57 4.05.64.28 1.14.45 1.53.57.64.2 1.22.17 1.68.1.51-.08 1.62-.66 1.85-1.29.23-.63.23-1.18.16-1.29-.07-.11-.25-.18-.52-.31zM16.02 5.33c-5.93 0-10.74 4.81-10.74 10.74 0 1.89.49 3.77 1.42 5.42L5 27l5.67-1.49a10.72 10.72 0 0 0 5.35 1.43h.01c5.93 0 10.74-4.81 10.74-10.74s-4.81-10.87-10.75-10.87zm6.41 17.15a9.06 9.06 0 0 1-6.41 2.65h-.01a9.06 9.06 0 0 1-4.61-1.26l-.33-.2-3.36.88.9-3.27-.21-.34a9.13 9.13 0 0 1-1.39-4.83c0-5.03 4.09-9.12 9.11-9.12 2.43 0 4.71.95 6.43 2.67a9.06 9.06 0 0 1 .01 12.81z"/></svg>
+              <span class="sr-only">Falar no WhatsApp</span>
+            </a>
+          </div>
+          <div id="msg" class="notice" role="status" aria-live="polite"></div>
+        </form>
+        <aside>
+          <div class="card">
+            <h3>Atendimento</h3>
+            <p><strong>E‑mail:</strong> <a href="mailto:contato@studio85.com.br">contato@studio85.com.br</a></p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer">(21) 9 9999‑9999</a></p>
+            <p><strong>Local:</strong> Rio de Janeiro — RJ</p>
+            <p class="help">Horário comercial em dias úteis.</p>
+          </div>
+          <div class="card" style="margin-top:12px">
+            <h3>Próximos passos</h3>
+            <ol>
+              <li>Entendimento do seu negócio e objetivos</li>
+              <li>Proposta e cronograma</li>
+              <li>Design, conteúdo e publicação</li>
+              <li>Suporte e evolução contínua</li>
+            </ol>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="imagens/logo.png" alt="Logo Studio 85" width="140" height="40">
+        <strong>Studio 85</strong>
+      </div>
+      <small>© <span id="year"></span> Studio 85. Todos os direitos reservados.</small>
+      <small><a href="#home">Voltar ao topo</a></small>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante WhatsApp -->
+  <a class="whats-float" href="https://wa.me/5521999999999?text=Ol%C3%A1%20Studio%2085!%20Quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.62c-.27-.13-1.62-.8-1.87-.89-.25-.09-.43-.13-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.27-.13-1.15-.42-2.2-1.34-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.41.12-.54.12-.12.27-.32.4-.49.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.47l-.53-.01c-.18 0-.47.07-.72.34s-.94.92-.94 2.25  .96 2.61 1.1 2.79c.13.18 1.89 2.89 4.57 4.05.64.28 1.14.45 1.53.57.64.2 1.22.17 1.68.1.51-.08 1.62-.66 1.85-1.29.23-.63.23-1.18.16-1.29-.07-.11-.25-.18-.52-.31zM16.02 5.33c-5.93 0-10.74 4.81-10.74 10.74 0 1.89.49 3.77 1.42 5.42L5 27l5.67-1.49a10.72 10.72 0 0 0 5.35 1.43h.01c5.93 0 10.74-4.81 10.74-10.74s-4.81-10.87-10.75-10.87zm6.41 17.15a9.06 9.06 0 0 1-6.41 2.65h-.01a9.06 9.06 0 0 1-4.61-1.26l-.33-.2-3.36.88.9-3.27-.21-.34a9.13 9.13 0 0 1-1.39-4.83c0-5.03 4.09-9.12 9.11-9.12 2.43 0 4.71.95 6.43 2.67a9.06 9.06 0 0 1 .01 12.81z"/></svg>
+  </a>
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Studio 85",
+    "url": "https://www.studio85.com.br/",
+    "email": "contato@studio85.com.br",
+    "telephone": "+55 21 99999-9999",
+    "image": "imagens/logo1.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rio de Janeiro",
+      "addressRegion": "RJ",
+      "addressCountry": "BR"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Brasil"
+    }
+  }
+  </script>
+
+  <script>
+    // Util: ano corrente
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile drawer
+    const hamb = document.querySelector('.hamb');
+    const drawer = document.getElementById('drawer');
+    hamb?.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      hamb.setAttribute('aria-expanded', String(open));
+      drawer.setAttribute('aria-hidden', String(!open));
+    });
+
+    // Close drawer on link click (accessibility + UX)
+    drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      hamb.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    }));
+
+    // Tracking (placeholder)
+    function track(ev, label){ console.log('[track]', ev, label); }
+    document.querySelectorAll('[data-track]').forEach(el => {
+      el.addEventListener('click', () => track('click', el.getAttribute('data-track')));
+    });
+
+    // Validação simples de formulário + simulação de envio
+    const form = document.getElementById('formContato');
+    const msg  = document.getElementById('msg');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nome = form.nome.value.trim();
+      const email = form.email.value.trim();
+      const mensagem = form.mensagem.value.trim();
+      if(!nome || !email || !mensagem){
+        msg.textContent = 'Preencha nome, e‑mail e mensagem.';
+        msg.className = 'notice err';
+        return;
+      }
+      msg.textContent = 'Obrigado! Sua mensagem foi enviada. Em breve entraremos em contato.';
+      msg.className = 'notice ok';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
